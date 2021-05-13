@@ -7,7 +7,7 @@ PORT = 1231
 ADDR = (IP, PORT)
 SIZE = 1024
 FORMAT = "utf-8"
-game_winner=''
+
 #generating random numbers
 def gnrt_randint(n):        #n=3*(number of players)
     import random
@@ -40,16 +40,29 @@ def winner_declaration(ls1,game_no,conn):
     a=max(ls1)
     msg=''
     msg1=''
-    game_winner=''
+    
+
     for i in range(0,len(ls1)):
         if(ls1[i]==a):
             msg1=f"Player{i+1} is winner of game{game_no}"
                 
         msg+=msg1
         msg1=''
-    game_winner+=msg
     msg=msg.encode(FORMAT)
     conn.send(msg)
+def winner_declaration_server(ls1,game_no):
+    a=max(ls1)
+    msg=''
+    msg1=''
+    
+
+    for i in range(0,len(ls1)):
+        if(ls1[i]==a):
+            msg1=f"Player{i+1} is winner of game{game_no}"
+                
+        msg+=msg1
+        msg1=''
+    print(msg)
 def intialise_pointls(ls1,player_no):
     for i in range(0,player_no):
         ls1.append(0)
@@ -118,7 +131,7 @@ while(gameon):
        # print(ls)
         print(j)
         print_roundwinners(ls,j+1,ls1)
-    print(game_winner)
+    winner_declaration_server(ls1,game_no)
     for i in range(0,player_n):
         t=threading.Thread(target=winner_declaration,args=(ls1,game_no,conn_ls[i]))
         t.start()
