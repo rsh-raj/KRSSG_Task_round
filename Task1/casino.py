@@ -105,11 +105,11 @@ def player_C(conn, A_list,ls):
     
 
 
-print("[STARTING] Server is starting...")
+print("[STARTING] Casino is starting...")
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind(ADDR)
 server.listen()
-print(f"[LISTENING] Server is listening on {IP}:{PORT}")
+print(f"[LISTENING] Casino is waiting for player to connect on {IP}:{PORT}")
 
     
 conn1, addr1 = server.accept()

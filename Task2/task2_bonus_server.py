@@ -8,7 +8,7 @@ print("[STARTING] Server is starting...")
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind(ADDR)
 server.listen()
-print(f"[LISTENING] Server is listening on {IP}:{PORT}")
+print(f"[Waiting] Server is waiting for client to connect on {IP}:{PORT}")
 conn, addr = server.accept()
 
 from operator import add

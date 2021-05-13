@@ -7,7 +7,7 @@ SIZE = 2048
 FORMAT = "utf-8"
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(ADDR)
-print(f"[CONNECTED] Client connected to server at {IP}:{PORT}")
+print(f"[CONNECTED] Player connected to casino at {IP}:{PORT}")
 msg=client.recv(SIZE).decode(FORMAT)
 print(msg)
 msg=client.recv(SIZE).decode(FORMAT)

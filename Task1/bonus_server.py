@@ -54,11 +54,11 @@ def intialise_pointls(ls1,player_no):
     for i in range(0,player_no):
         ls1.append(0)
 
-print("[STARTING] Server is starting...")
+print("[STARTING] Casino is starting...")
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind(ADDR)
 server.listen()
-print(f"[LISTENING] Server is listening on {IP}:{PORT}")
+print(f"[LISTENING] Casino is waiting for client to connect on {IP}:{PORT}")
 client, addr = server.accept()
 print(f"Client connected at addres{addr}")
 #Receiving number of players
@@ -73,7 +73,7 @@ print(f"{player_n} players are going to play this match")
 print(round_n)
 
 #connecting with players
-print("Players are connecting")
+print("Waiting for Players to connect..")
 conn_ls=[]
 for i in range(0,player_n):
     conn,addr=server.accept()

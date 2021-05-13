@@ -8,7 +8,7 @@ FORMAT = "utf-8"
 def main():
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client.connect(ADDR)
-    print(f"[CONNECTED] Client connected to server at {IP}:{PORT}")
+    print(f"[CONNECTED] Player connected to casino at {IP}:{PORT}")
 
     msg1=client.recv(SIZE)
     msg1=msg1.decode(FORMAT)
