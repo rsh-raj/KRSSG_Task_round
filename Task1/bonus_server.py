@@ -11,12 +11,12 @@ FORMAT = "utf-8"
 #generating random numbers
 def gnrt_randint(n):        #n=3*(number of players)
     import random
-    a=[]
-    while(len(a)<n):
+    random_int_list=[]
+    while(len(random_int_list)<n):
         b=random.randint(1,52)
-        if b not in a:
-            a.append(b)
-    return a
+        if b not in random_int_list:
+            random_int_list.append(b)
+    return random_int_list
 #scaling the user output
 def scale(ls):
     for i in range(0,len(ls)):
@@ -107,7 +107,7 @@ def player(conn,card_list,ls):
     msg = conn.recv(SIZE)
     msg=msg.decode(FORMAT)
     ls.append(msg)
-    print(f"Player {i+1}: {msg}")
+    #print(f"Player {i+1}: {msg}")
 gameon=True
 while(gameon):
     ls1=[]
@@ -124,7 +124,7 @@ while(gameon):
             #print(pl_ls)
             t=threading.Thread(target=player,args=(conn_ls[i],pl_ls,ls))
             t.start()
-            threads.append(t)
+            threads.append(t)    #collecting threads id in a list to use join method later
         for i in range(0,player_n):
             threads[i].join()
         scale(ls)
@@ -132,6 +132,7 @@ while(gameon):
         print(j)
         print_roundwinners(ls,j+1,ls1)
     winner_declaration_server(ls1,game_no)
+    #
     for i in range(0,player_n):
         t=threading.Thread(target=winner_declaration,args=(ls1,game_no,conn_ls[i]))
         t.start()
